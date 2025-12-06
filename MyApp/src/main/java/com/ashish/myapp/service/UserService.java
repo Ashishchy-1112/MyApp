@@ -25,12 +25,21 @@ public class UserService {
 	}
 	public User saveUser(User user) {
 
-		// Encode the password before saving
-		String encodedPassword = passwordEncoder.encode(user.getPassword());
-		user.setPassword(encodedPassword);
+	    // Print the user data before saving
+	    System.out.println("Before saving: " + user);
 
-		return userRepository.save(user);
+	    // Encode the password before saving
+	    String encodedPassword = passwordEncoder.encode(user.getPassword());
+	    user.setPassword(encodedPassword);
+
+	    User savedUser = userRepository.save(user);
+
+	    // Print the saved user data (optional)
+	    System.out.println("After saving: " + savedUser);
+
+	    return savedUser;
 	}
+
 
 
 }
